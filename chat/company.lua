@@ -26,11 +26,11 @@ end
 -- titles
 
 local titles = {
-  { 'Senior VP of', 'Head of', 'Senior Director of'},
-  { 'VP of', 'Director', 'xSenior Manager' },
-  { 'Director', 'xTeam Lead', 'xManager', 'xExecutive'},
-  { 'xAssociate', 'Assistant'},
-  { 'xIntern', 'Junior' }
+  { 'Senior VP of ', 'Head of ', 'Senior Director of '},
+  { 'VP of ', 'Director of ', 'x Senior Manager' },
+  { 'x Director', 'x Team Lead', 'x Manager', 'x Executive'},
+  { 'x Associate', 'x Assistant'},
+  { 'x Intern', 'Junior ' }
 }
 
 local departments = { 'Sales', 'Marketing', 'IT', 'Support', 'Operations', 'HR'}
@@ -70,11 +70,11 @@ for i = 1, layers do
     local department = departments[math.random(1, #departments)]
 
     if string.sub(title, 1, 1) == 'x' then
-      title = department .. ' ' .. string.sub(title, 2)
-    elseif title == 'Junior' then
-      title = title .. ' ' .. department .. ' Associate'
+      title = department .. string.sub(title, 2)
+    elseif title == 'Junior ' then
+      title = title .. department .. ' Associate'
     else
-      title = title .. ' ' .. department
+      title = title  .. department
     end
 
     table.insert(layer, {
@@ -82,14 +82,23 @@ for i = 1, layers do
       first_name = first_name,
       last_name = last_name,
       department = department,
-      title = title
+      title = title,
+      layer = i
     })
 
     -- debug
-    -- print(first_name .. ' ' .. last_name .. ', ' .. title)
+    print(first_name .. ' ' .. last_name .. ', ' .. title)
   end
 
   table.insert(company, layer)
+end
+
+
+company.player = company[5][1]
+
+
+function company.get_sender(layer)
+  return company[layer][math.random(1, #company[layer])]
 end
 
 

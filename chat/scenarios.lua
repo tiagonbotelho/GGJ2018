@@ -10,7 +10,9 @@ local company = require('company')
 -- scenario begin: sender, greeting, target, request, ...
 
 local greetings = {
-  '', 'Hi', 'Hey', 'So'
+  '', 'Hi ',  'Hey ',  'Hiya ',  'So ',
+  '', 'Hi ',  'hey ',  'hiya ',  'so ',
+      'hi, ', 'hey, ', 'hiya, ', 'so, '
 }
 
 -- targets
@@ -20,13 +22,20 @@ local requests = {
 }
 
 
-local player = company[5][1]
+function create_scenario(player)
+  local sender = company.get_sender(player.layer - 1)
+  local greeting = greetings[math.random(1, #greetings)]
 
-print(inspect(player))
+  -- targets: 2% chance it's @all or @here :P
+  --          6% chance it's @player_department
+  --          15% chance it's player
+  --          10% chance to at more people
+
+  print(sender.username .. ': ' .. greeting)
+end
 
 
 for i = 1, 3 do
-
-
+  create_scenario(company.player)
 end
 
