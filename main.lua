@@ -16,6 +16,18 @@ function love.draw()
   main_window.draw()
 end
 
+function love.mousepressed(x, y, button)
+  if button == 1 then
+    main_window.check_mousepress(x, y)
+  end
+end
+
+function love.textinput(text)
+  if main_window.text_area.active then
+    main_window.append_text_to_text_area(text)
+  end
+end
+
 function love.keyreleased(key, code)
 end
 
