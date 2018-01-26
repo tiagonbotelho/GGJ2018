@@ -3,7 +3,6 @@ local sidebar = require "sidebar"
 local main_window = require "main_window"
 
 function love.load()
-  love.window.setMode(1400, 900)
   sidebar.load()
   main_window.load()
 end
