@@ -33,7 +33,7 @@ local titles = {
   { 'xIntern', 'Junior' }
 }
 
-local roles = { 'Sales', 'Marketing', 'IT', 'Support', 'Operations', 'HR'}
+local departments = { 'Sales', 'Marketing', 'IT', 'Support', 'Operations', 'HR'}
 
 
 -- generate company employees
@@ -67,18 +67,21 @@ for i = 1, layers do
 
     last_name = surnames[math.random(1, #surnames)]
     local title = titles[i][math.random(1, #titles[i])]
+    local department = departments[math.random(1, #departments)]
 
     if string.sub(title, 1, 1) == 'x' then
-      title = roles[math.random(1, #roles)] .. ' ' .. string.sub(title, 2)
+      title = department .. ' ' .. string.sub(title, 2)
     elseif title == 'Junior' then
-      title = title .. ' ' .. roles[math.random(1, #roles)] .. ' Associate'
+      title = title .. ' ' .. department .. ' Associate'
     else
-      title = title .. ' ' .. roles[math.random(1, #roles)]
+      title = title .. ' ' .. department
     end
 
     table.insert(layer, {
+      username = string.lower(first_name)
       first_name = first_name,
       last_name = last_name,
+      department = department,
       title = title
     })
 
