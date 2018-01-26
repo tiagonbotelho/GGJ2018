@@ -83,7 +83,7 @@ for i = 1, layers do
     })
 
     -- debug
-    -- print(first_name, ' ', last_name)
+    print(first_name .. ' ' .. last_name .. ', ' .. title)
   end
 
   table.insert(company, layer)
