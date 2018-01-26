@@ -1,5 +1,7 @@
 
-local profiles = require('profiles')
+_G.inspect = require('inspect')
+
+local scenarios = require('scenarios')
 
 function love.load()
 

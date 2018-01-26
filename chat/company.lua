@@ -78,7 +78,7 @@ for i = 1, layers do
     end
 
     table.insert(layer, {
-      username = string.lower(first_name)
+      username = string.lower(first_name),
       first_name = first_name,
       last_name = last_name,
       department = department,
@@ -86,8 +86,11 @@ for i = 1, layers do
     })
 
     -- debug
-    print(first_name .. ' ' .. last_name .. ', ' .. title)
+    -- print(first_name .. ' ' .. last_name .. ', ' .. title)
   end
 
   table.insert(company, layer)
 end
+
+
+return company
