@@ -23,13 +23,27 @@ for line in file:lines() do
 end
 
 
+-- titles
+
+local titles = {
+  { 'Senior VP of', 'Head of', 'Senior Director of'},
+  { 'VP of', 'Director', 'xSenior Manager' },
+  { 'Director', 'xTeam Lead', 'xManager', 'xExecutive'},
+  { 'xAssociate', 'Assistant'},
+  { 'xIntern', 'Junior' }
+}
+
+local roles = { 'Sales', 'Marketing', 'IT', 'Support', 'Operations', 'HR'}
+
+
 -- generate company employees
 
 local company = {}
 
 math.randomseed(os.time())
 
-local layers = math.random(5, 6)
+-- local layers = math.random(5, 6)
+local layers = 5
 
 print(layers)
 
@@ -52,11 +66,24 @@ for i = 1, layers do
     end
 
     last_name = surnames[math.random(1, #surnames)]
+    local title = titles[i][math.random(1, #titles[i])]
 
-    table.insert(layer, { first_name = first_name, last_name = last_name })
+    if string.sub(title, 1, 1) == 'x' then
+      title = roles[math.random(1, #roles)] .. ' ' .. string.sub(title, 2)
+    elseif title == 'Junior' then
+      title = title .. ' ' .. roles[math.random(1, #roles)] .. ' Associate'
+    else
+      title = title .. ' ' .. roles[math.random(1, #roles)]
+    end
+
+    table.insert(layer, {
+      first_name = first_name,
+      last_name = last_name,
+      title = title
+    })
 
     -- debug
-    print(first_name, ' ', last_name)
+    -- print(first_name, ' ', last_name)
   end
 
   table.insert(company, layer)
