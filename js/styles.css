@@ -71,13 +71,11 @@ body {
         margin-left: 15px;
         font-weight: 900; }
     .box #main .profile {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      overflow: hidden;
-      box-sizing: border-box;
-      border: 1px solid rgba(160, 160, 162, 0.7);
-      width: 100%; }
+      position: absolute;
+      width: 300px;
+      background: black;
+      height: 100%;
+      right: 0; }
     .box #main .content {
       overflow-y: scroll;
       overflow-x: hidden;
