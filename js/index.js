@@ -1,28 +1,25 @@
 var channels = [
-    new Channel("general", true, []),
-    new Channel("random", false, []),
-    new Channel("keyboards", true, []),
-    new Channel("marketing", false, []),
-    new Channel("backend", true, []),
-];
-
-var users = [
-    new User("sean", false, [], true),
-    new User("tiago", true, [], false),
-    new User("douwe", false, [], false),
-    new User("zj", false, [], false),
-    new User("pablo", true, [], false)
+    new Channel(1, "general", true, [], true, "channel"),
+    new Channel(2, "random", false, [], false, "channel"),
+    new Channel(3, "keyboards", true, [], false, "channel"),
+    new Channel(4, "marketing", false, [], false, "channel"),
+    new Channel(5, "backend", true, [], false, "channel"),
+    new Channel(6, "sean", false, [], false, "user"),
+    new Channel(7, "tiago", true, [], false, "user"),
+    new Channel(8, "douwe", false, [], false, "user"),
+    new Channel(9, "zj", false, [], false, "user"),
+    new Channel(10, "pablo", true, [], false, "user")
 ];
 
 $(document).ready(function(){
     var active_chat = users[0];
     $(".chatbox").attr("placeholder", "Message @" + active_chat.name);
 
-    channels.forEach(function(channel) {
+    Channel.getChannels(channels).forEach(function(channel) {
         $(".channel-list").append(channel.template());
     });
 
-    users.forEach(function(user) {
+    Channel.getUsers(channels).forEach(function(user) {
         $(".users-list").append(user.template());
     });
 
