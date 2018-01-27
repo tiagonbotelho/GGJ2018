@@ -232,7 +232,7 @@ var titles = [
 
 company.departments = departments
 
-company.player = { level: 2, title: "Manager" }
+company.player = { name: company.getRandomName(), level: 2, title: "Manager" }
 
 company.getRandomName = function() {
   var i = Math.floor(Math.random() * Math.floor(names.length))
@@ -251,14 +251,16 @@ company.getRandomTitle = function() {
 }
 
 company.generateUsers = function(x) {
-  var users = []
+  var users = {}
 
   for(var i = 0; i < x; i++) {
-    users.push({
-      name: company.getRandomName(),
+    var name = company.getRandomName()
+
+    users[name] = {
+      name: name,
       department: company.getRandomDepartment(),
       title: company.getRandomTitle
-    })
+    }
   }
 
   return users

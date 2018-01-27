@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 var channels = [
     new Channel(1, "general", false, [], false, "channel"),
     new Channel(2, "random", false, [], false, "channel"),
