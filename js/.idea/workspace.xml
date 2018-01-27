@@ -13,28 +13,69 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="conversation.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/conversation.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="conversation.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/conversation.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="165">
+                  <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/index.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="885">
+                  <caret line="59" column="48" lean-forward="false" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="48" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="company.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/company.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="336">
+                  <caret line="232" column="0" lean-forward="true" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
+                  <folding>
+                    <element signature="e#74#2454#0" expanded="false" />
+                    <element signature="e#2487#2560#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/index.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="240">
+                  <caret line="16" column="46" lean-forward="false" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="channel.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/channel.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="440">
+                  <caret line="38" column="43" lean-forward="false" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -108,7 +149,7 @@
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
-    <property name="SearchEverywhereHistoryKey" value="sty&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/styles.scss&#10;index&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/index.html&#10;user&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/user.js&#10;inde&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/index.html&#10;us&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/user.js&#10;conver&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/conversation.js&#10;index.js&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/index.js&#10;style&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/styles.scss" />
+    <property name="SearchEverywhereHistoryKey" value="chann&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/channel.js&#10;sty&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/styles.scss&#10;index&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/index.html&#10;user&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/user.js&#10;inde&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/index.html&#10;us&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/user.js&#10;conver&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/conversation.js&#10;index.js&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/index.js&#10;style&#9;FILE&#9;file:///Users/tiagobotelho/src/GGJ2018/js/styles.scss" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -135,12 +176,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1517013555276</updated>
-      <workItem from="1517013557138" duration="24951000" />
+      <workItem from="1517013557138" duration="25399000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="24951000" />
+    <option name="totallyTimeSpent" value="25399000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="1178" extended-state="6" />
@@ -200,16 +241,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/channel.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="68" column="37" lean-forward="false" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
-          <folding>
-            <marker date="1517065004183" expanded="true" signature="477:865" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/styles.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -218,10 +249,29 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/company.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="232" column="0" lean-forward="true" selection-start-line="232" selection-start-column="0" selection-end-line="232" selection-end-column="0" />
+          <folding>
+            <element signature="e#74#2454#0" expanded="false" />
+            <element signature="e#2487#2560#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/channel.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="38" column="43" lean-forward="false" selection-start-line="38" selection-start-column="43" selection-end-line="38" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        <state relative-caret-position="885">
+          <caret line="59" column="48" lean-forward="false" selection-start-line="59" selection-start-column="48" selection-end-line="59" selection-end-column="48" />
           <folding />
         </state>
       </provider>

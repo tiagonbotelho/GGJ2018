@@ -57,8 +57,7 @@ $(document).ready(function() {
 
         if (key === 13) {
             e.preventDefault();
-            let user = Channel.findChannel(channels, $("#username").html());
-            active_chat.addMessage(user, this.innerHTML);
+            active_chat.addMessage(company.player, this.innerHTML);
         }
     });
 });
