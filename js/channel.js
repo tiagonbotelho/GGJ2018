@@ -39,8 +39,10 @@ Channel.prototype.addMessage = function(from, message) {
     var conversation = new Conversation(from, date, message);
     this.conversations = this.conversations.concat(conversation);
 
-    $(".content").prepend(conversation.template());
-    $(".chatbox").html("");
+    if (from.active) {
+        $(".content").prepend(conversation.template());
+        $(".chatbox").html("");
+    }
 }
 
 Channel.prototype.renderConversation = function() {
@@ -96,7 +98,7 @@ Channel.findOrCreateUserChannel = function(name, active) {
     var channel = Channel.findChannel(channels, name.toLowerCase())
 
     if(!channel) {
-      var channel = new Channel(channels.length, name, active, [], false, "user")
+      var channel = new Channel(channels.length + 1, name, active, [], false, "user")
       channels.push(channel)
     }
 

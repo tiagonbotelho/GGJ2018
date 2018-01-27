@@ -34,7 +34,7 @@ $(document).ready(function() {
         $(".users-list").append(user.template());
     });
 
-    $(".user").on('click', function(_) {
+    $(document).on('click', ".user", function(_) {
         let clicked_user = Channel.findChannel(channels, this.children[0].innerHTML);
 
         if (clicked_user !== active_chat) {
@@ -44,7 +44,7 @@ $(document).ready(function() {
         }
     });
 
-    $(".channel").on('click', function(_) {
+    $(document).on('click', ".channel", function(_) {
         let clicked_channel = Channel.findChannel(channels, this.children[0].innerHTML);
 
         if (clicked_channel !== active_chat) {
