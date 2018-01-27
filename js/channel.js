@@ -1,6 +1,6 @@
-function Channel(id, name, hasNotifications, conversations, active, type) {
+function Channel(name, hasNotifications, conversations, active, type) {
     this.type = type;
-    this.id = type + id;
+    this.id = type + (channels.length + 1);
     this.classes = [type, this.id];
     this.name = name.toLowerCase();
     this.hasNotifications = hasNotifications;
@@ -116,7 +116,7 @@ Channel.findOrCreateUserChannel = function(name, active) {
     var channel = Channel.findChannel(channels, name.toLowerCase())
 
     if(!channel) {
-      var channel = new Channel(channels.length + 1, name, active, [], false, "user")
+      var channel = new Channel(name, active, [], false, "user")
       channels.push(channel)
     }
 

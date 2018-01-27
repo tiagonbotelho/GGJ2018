@@ -7,20 +7,20 @@ $(document).ready(function() {
 
     window.level = 1
 
-    var channels = [
-        new Channel(1, "general", true, [], true, "channel"),
-        new Channel(2, "random", false, [], false, "channel"),
-        new Channel(3, "keyboards", true, [], false, "channel"),
-        new Channel(4, "marketing", false, [], false, "channel"),
-        new Channel(5, "backend", true, [], false, "channel"),
-
-        new Channel(6, company.getRandomUser().name, false, [], false, "user"),
-        new Channel(7, company.getRandomUser().name, false, [], false, "user"),
-        new Channel(8, company.getRandomUser().name, false, [], false, "user"),
-        new Channel(9, company.getRandomUser().name, false, [], false, "user"),
-    ];
-
+    var channels = []
     window.channels = channels
+
+    channels.push(new Channel("general",      false, [], true, "channel"))
+    channels.push(new Channel("random",       false, [], false, "channel"))
+    channels.push(new Channel("support",      false, [], false, "channel"))
+    channels.push(new Channel("operations",   false, [], false, "channel"))
+    channels.push(new Channel("marketing",    false, [], false, "channel"))
+    channels.push(new Channel("emergency",    false, [], false, "channel"))
+    channels.push(new Channel(company.getRandomUser().name, false, [], false, "user"))
+    channels.push(new Channel(company.getRandomUser().name, false, [], false, "user"))
+    channels.push(new Channel(company.getRandomUser().name, false, [], false, "user"))
+    channels.push(new Channel(company.getRandomUser().name, false, [], false, "user"))
+
     window.active_chat = channels[0];
     active_chat.activate();
 
