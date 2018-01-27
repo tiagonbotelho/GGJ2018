@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,800,900');
+
+
+$white: rgb(255, 255, 255);
+$black: rgb(0, 0, 0);
+$gray: rgb(113, 114, 116);
+$lightergray: rgb(113, 114, 116);
+$lightgray: rgba(160, 160, 162, 0.7);
+$dark_purple: rgb(62,49,60);
+$purple: rgb(77, 57, 75);
+$purple_bright: rgb(202, 196, 201);
+$light_purple: rgb(171, 155, 169);
+$green: rgb(76, 150, 137);
+$pink: rgb(195, 134, 223);
+
+body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+.box {
+  font-family: 'Lato', sans-serif;
+
+  #sidebar {
+    height: 100vh;
+    background-color: $purple;
+    padding-top: 10px;
+    padding-left: 35px;
+    color: white;
+
+    .bottom-header {
+      margin-top: -10px;
+
+      #availability {
+        font-size: 8px;
+        color: $green;
+        margin-right: 4px;
+      }
+
+      #username {
+        font-size: 10px;
+        color: $light_purple;
+        font-weight: 400;
+      }
+    }
+
+    #team-name {
+      font-size: 14px;
+      font-weight: 900;
+    }
+
+    .section {
+      color: $purple_bright;
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .has-notifications > span {
+      color: $white;
+      font-weight: 800;
+    }
+
+    #channels {
+      margin-top: 20px;
+
+      .channel-list {
+        font-size: 12px;
+        .channel {
+          color: $light_purple;
+          font-weight: 400;
+
+          &:hover {
+            width: 100%;
+            background-color: $dark_purple;
+          }
+        }
+      }
+    }
+
+    #direct-messages {
+      margin-top: 20px;
+
+      .users-list {
+        font-size: 12px;
+
+        .user {
+          color: $light_purple;
+          font-weight: 400;
+
+          &:hover {
+            width: 100%;
+            background-color: $dark_purple;
+          }
+        }
+
+        .active {
+          background-color: $green;
+        }
+      }
+    }
+  }
+
+  #main {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    flex-basis: 0%;
+    flex-shrink: 1;
+    flex-grow: 1;
+    padding-left: 0;
+
+    .content {
+      overflow-y: scroll;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column-reverse;
+      flex-basis: 0%;
+      flex-shrink: 1;
+      flex-grow: 1;
+      box-sizing: border-box;
+    }
+
+    .message {
+      font-size: 15px;
+      font-weght: 400;
+      margin-left: 20px;
+      position: relative;
+      display: block;
+
+      .name {
+        font-size: 15px;
+        font-weight: 800;
+        color: $pink;
+        margin-right: 5px;
+      }
+
+      .time {
+        font-size: 12px;
+        font-weight: 300;
+        color: $lightergray;
+        margin-right: 10px;
+      }
+    }
+
+    [contenteditable=true]:empty:before{
+      content: attr(placeholder);
+      display: block; /* For Firefox */
+      color: $lightgray;
+    }
+
+    .chatbox {
+      display: block;
+      position: relative;
+      border: 2px solid $lightgray;
+      border-radius: 6px;
+      height: 40px;
+      padding-top: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin: 20px;
+    }
+
+    .chatbox:focus {
+      outline: none;
+      border: 2px solid $gray;
+    }
+  }
+}
+

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transmission co</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body>
+<div class="box">
+    <div class="row">
+        <div id="sidebar" class="col-md-1">
+            <div class="header">
+                <div class="top-header">
+                    <span id="team-name">Transmission Inc.</span>
+                </div>
+                <div class="bottom-header">
+                    <i id="availability" class="fa fa-circle" aria-hidden="true"></i>
+                    <span id="username">tiago</span>
+                </div>
+            </div>
+            <div id="channels">
+                <span class="section">Channels</span>
+                <div class="channel-list"></div>
+            </div>
+
+            <div id="direct-messages">
+                <span class="section">Direct Messages</span>
+                <div class="users-list"></div>
+            </div>
+        </div>
+        <div id="main" class="col-md-11">
+            <div class="content"></div>
+            <div class="chatbox" contenteditable="true" placeholder="Message @user"></div>
+        </div>
+    </div>
+</div>
+
+<script src="http://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="user.js"></script>
+<script src="channel.js"></script>
+<script src="conversation.js"></script>
+<script src="index.js"></script>
+</body>
+</html>
