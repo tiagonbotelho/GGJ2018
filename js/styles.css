@@ -70,34 +70,47 @@ body {
       .box #main .user-header .channel-name {
         margin-left: 15px;
         font-weight: 900; }
-    .box #main .profile {
-      position: absolute;
-      width: 300px;
-      background: black;
-      height: 100%;
-      right: 0; }
-    .box #main .content {
-      overflow-y: scroll;
-      overflow-x: hidden;
+    .box #main .chat {
       display: flex;
-      flex-direction: column-reverse;
+      position: relative;
+      flex-direction: column;
       flex-basis: 0%;
       flex-shrink: 1;
       flex-grow: 1;
-      box-sizing: border-box; }
-    .box #main .chatbox {
-      display: block;
-      position: relative;
-      border: 2px solid rgba(160, 160, 162, 0.7);
-      border-radius: 6px;
-      height: 40px;
-      padding-top: 5px;
-      padding-left: 10px;
-      padding-right: 10px;
-      margin: 20px; }
-    .box #main .chatbox:focus {
-      outline: none;
-      border: 2px solid #717274; }
+      padding-left: 0; }
+      .box #main .chat .content {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column-reverse;
+        flex-basis: 0%;
+        flex-shrink: 1;
+        flex-grow: 1;
+        box-sizing: border-box; }
+      .box #main .chat .chatbox {
+        display: block;
+        position: relative;
+        border: 2px solid rgba(160, 160, 162, 0.7);
+        border-radius: 6px;
+        height: 40px;
+        padding-top: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin: 20px; }
+      .box #main .chat .chatbox:focus {
+        outline: none;
+        border: 2px solid #717274; }
+    .box #main .profile {
+      position: absolute;
+      width: 300px;
+      border-left: 1px solid rgba(160, 160, 162, 0.7);
+      height: 100%;
+      right: 0;
+      text-align: center; }
+    .box #main .push-left {
+      margin-right: 320px !important; }
+    .box #main .hidden {
+      display: none; }
     .box #main .message {
       font-size: 15px;
       font-weght: 400;
