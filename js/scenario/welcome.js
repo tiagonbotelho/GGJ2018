@@ -8,6 +8,8 @@ var WelcomeScenario = function () {
     manager = company.getRandomUser()
   }
 
+  this.manager = manager;
+
   var channel = Channel.findOrCreateUserChannel(manager.name, true)
 
   Channel.subscribe(channel.name, this)
@@ -21,4 +23,11 @@ var WelcomeScenario = function () {
 }
 
 WelcomeScenario.prototype = new Scenario()
+
+WelcomeScenario.prototype.onConversation = function(conversation, channel) {
+    if (conversation.from !== this.manager) {
+        channel.addMessage(this.manager, "OH HAI!")
+    }
+}
+
 

@@ -40,10 +40,15 @@ Channel.prototype.addMessage = function(from, message) {
     var conversation = new Conversation(from, date, message);
     this.conversations.push(conversation);
 
-    if (from.active) {
+    if (this.active) {
         $(".content").prepend(conversation.template());
         $(".chatbox").html("");
     }
+
+    var $this = this;
+    this.followers.forEach(function(follower) {
+        follower.onConversation(conversation, $this);
+    });
 }
 
 Channel.prototype.renderConversation = function() {
