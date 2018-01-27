@@ -1,13 +1,9 @@
 
-// call company.generateUsers(x)
-// where x is the number of users you want
-// access company.player for { name: "...", department, "...", title: { level: 0..4, title: "..." }}
+function Company(size) {
+  this.size = size
+}
 
-company = {}
-window.company = company
-
-
-var names = [
+Company.prototype.names = [
   "James",
   "John",
   "Robert",
@@ -210,7 +206,7 @@ var names = [
   "Kayla"
 ]
 
-var departments =[
+Company.prototype.departments =[
   "Sales",
   "Marketing",
   "IT",
@@ -219,7 +215,7 @@ var departments =[
   "HR"
 ]
 
-var titles = [
+Company.prototype.titles = [
   // level 0
   ["Associate", "Assistant"],
   ["Intern", "Junior"],
@@ -230,38 +226,70 @@ var titles = [
   ["Senior Vice President", "Department Head", "Senior Director"]
 ]
 
-company.departments = departments
+Company.prototype.generate = function() {
+  this.player = { name: this.getRandomName(), title: { level: 2, title: "Manager" }}
 
-company.player = { name: company.getRandomName(), level: 2, title: "Manager" }
+  this.users = {}
 
-company.getRandomName = function() {
-  var i = Math.floor(Math.random() * Math.floor(names.length))
-  return names[i]
-}
+  for(var i = 0; i < this.size; i++) {
+    var name = this.getRandomName()
 
-company.getRandomDepartment = function() {
-  var i = Math.floor(Math.random() * Math.floor(departments.length))
-  return departments[i]
-}
-
-company.getRandomTitle = function() {
-  var i = Math.floor(Math.random() * Math.floor(titles.length))
-  var j = Math.floor(Math.random() * Math.floor(titles[i].length))
-  return { level: i, title: titles[i][j] }
-}
-
-company.generateUsers = function(x) {
-  var users = {}
-
-  for(var i = 0; i < x; i++) {
-    var name = company.getRandomName()
-
-    users[name] = {
+    this.users[name] = {
       name: name,
-      department: company.getRandomDepartment(),
-      title: company.getRandomTitle
+      department: this.getRandomDepartment(),
+      title: this.getRandomTitle()
+    }
+  }
+}
+
+Company.prototype.getRandomName = function() {
+  var i = Math.floor(Math.random() * Math.floor(this.names.length))
+  return this.names[i]
+}
+
+Company.prototype.getRandomDepartment = function() {
+  var i = Math.floor(Math.random() * Math.floor(this.departments.length))
+  return this.departments[i]
+}
+
+Company.prototype.getRandomTitle = function() {
+  var i = Math.floor(Math.random() * Math.floor(this.titles.length))
+  var j = Math.floor(Math.random() * Math.floor(this.titles[i].length))
+  return { level: i, title: this.titles[i][j] }
+}
+
+Company.prototype.getRandomUser = function() {
+  var keys = Object.keys(this.users);
+  var name = keys[Math.floor(Math.random() * Math.floor(Object.keys(this.users).length))]
+  return this.users[name]
+}
+
+Company.prototype.getDepartmentSeniorRandomUser = function(department) {
+  var possible = []
+
+  for (var k in this.users) {
+    var user = this.users[k]
+    if(user.department == department) {
+      if(user.title.level >= this.player.title.level) {
+        possible.push(user)
+      }
     }
   }
 
-  return users
+  return possible[Math.floor(Math.random() * Math.floor(possible.length))]
+}
+
+Company.prototype.getDepartmentJuniorRandomUser = function(department) {
+  var possible = []
+
+  for (var k in this.users) {
+    var user = this.users[k]
+    if(user.department == department) {
+      if(user.title.level <= this.player.title.level) {
+        possible.push(user)
+      }
+    }
+  }
+
+  return possible[Math.floor(Math.random() * Math.floor(possible.length))]
 }
