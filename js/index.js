@@ -21,8 +21,7 @@ $(document).ready(function() {
     ];
 
     window.channels = channels
-
-    var active_chat = channels[0];
+    window.active_chat = channels[0];
     active_chat.activate();
 
     Channel.getChannels(channels).forEach(function(channel) {
