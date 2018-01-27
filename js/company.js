@@ -1,4 +1,8 @@
 
+// call company.generateUsers(x)
+// where x is the number of users you want
+// access company.player for { name: "...", department, "...", title: { level: 0..4, title: "..." }}
+
 company = {}
 window.company = company
 
@@ -247,10 +251,14 @@ company.getRandomTitle = function() {
 }
 
 company.generateUsers = function(x) {
-  var users =[]
+  var users = []
 
   for(var i = 0; i < x; i++) {
-    users.push(new User(company.getRandomName(), false, [], true))
+    users.push({
+      name: company.getRandomName(),
+      department: company.getRandomDepartment(),
+      title: company.getRandomTitle
+    })
   }
 
   return users
