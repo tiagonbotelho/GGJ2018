@@ -269,6 +269,7 @@ Company.prototype.getDepartmentSeniorRandomUser = function(department) {
 
   for (var k in this.users) {
     var user = this.users[k]
+
     if(user.department == department) {
       if(user.title.level >= this.player.title.level) {
         possible.push(user)
@@ -284,6 +285,7 @@ Company.prototype.getDepartmentJuniorRandomUser = function(department) {
 
   for (var k in this.users) {
     var user = this.users[k]
+
     if(user.department == department) {
       if(user.title.level <= this.player.title.level) {
         possible.push(user)
