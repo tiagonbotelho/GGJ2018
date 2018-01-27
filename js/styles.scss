@@ -122,40 +122,59 @@ body {
       }
     }
 
-    .profile {
-      position: absolute;
-      width: 300px;
-      background: black;
-      height: 100%;
-      right: 0;
-    }
-
-    .content {
-      overflow-y: scroll;
-      overflow-x: hidden;
+    .chat {
       display: flex;
-      flex-direction: column-reverse;
+      position: relative;
+      flex-direction: column;
       flex-basis: 0%;
       flex-shrink: 1;
       flex-grow: 1;
-      box-sizing: border-box;
+      padding-left: 0;
+
+      .content {
+        overflow-y: scroll;
+        overflow-x: hidden;
+        display: flex;
+        flex-direction: column-reverse;
+        flex-basis: 0%;
+        flex-shrink: 1;
+        flex-grow: 1;
+        box-sizing: border-box;
+      }
+
+      .chatbox {
+        display: block;
+        position: relative;
+        border: 2px solid $lightgray;
+        border-radius: 6px;
+        height: 40px;
+        padding-top: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin: 20px;
+      }
+
+      .chatbox:focus {
+        outline: none;
+        border: 2px solid $gray;
+      }
     }
 
-    .chatbox {
-      display: block;
-      position: relative;
-      border: 2px solid $lightgray;
-      border-radius: 6px;
-      height: 40px;
-      padding-top: 5px;
-      padding-left: 10px;
-      padding-right: 10px;
-      margin: 20px;
+    .profile {
+      position: absolute;
+      width: 300px;
+      border-left: 1px solid $lightgray;
+      height: 100%;
+      right: 0;
+      text-align: center;
     }
 
-    .chatbox:focus {
-      outline: none;
-      border: 2px solid $gray;
+    .push-left {
+      margin-right: 320px!important;
+    }
+
+    .hidden {
+      display: none;
     }
 
     .message {

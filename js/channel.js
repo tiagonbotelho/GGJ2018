@@ -8,6 +8,10 @@ function Channel(id, name, hasNotifications, conversations, active, type) {
     this.active = active;
 }
 
+Channel.prototype.profile_template = function() {
+    return `<div class="profile-info"><span class="profile-name">${this.name}</span></div>`
+}
+
 Channel.prototype.header_template = function() {
     var name = this.name;
 
@@ -16,10 +20,6 @@ Channel.prototype.header_template = function() {
     }
 
     return `<div class="header"><span class="channel-name">${name}</span></div>`
-}
-
-Channel.prototype.profile_template = function() {
-    return `<div class="profile"></div>`
 }
 
 Channel.prototype.template = function() {
@@ -39,8 +39,10 @@ Channel.prototype.addMessage = function(from, message) {
     var conversation = new Conversation(from, date, message);
     this.conversations = this.conversations.concat(conversation);
 
-    $(".content").prepend(conversation.template());
-    $(".chatbox").html("");
+    if (from.active) {
+        $(".content").prepend(conversation.template());
+        $(".chatbox").html("");
+    }
 }
 
 Channel.prototype.renderConversation = function() {
@@ -62,11 +64,12 @@ Channel.prototype.activate = function() {
 
     $(".chatbox").attr("placeholder", "Message " + handle + this.name);
     $(".user-header").append(this.header_template());
-
-    var $this = this;
+    $(".profile").append(this.profile_template());
 
     $(".header").on('click', function() {
-        $("#main").append($this.profile_template());
+        $(".profile").toggle();
+        $(".chatbox").toggleClass("push-left");
+        $(".content").toggleClass("push-left");
     });
 }
 
@@ -76,6 +79,7 @@ Channel.prototype.deactivate = function() {
     $("." + this.id).removeClass("active");
     $(".content").empty();
     $(".user-header").empty();
+    $(".profile").empty();
 }
 
 Channel.findChannel = function(list, name) {
@@ -94,7 +98,7 @@ Channel.findOrCreateUserChannel = function(name, active) {
     var channel = Channel.findChannel(channels, name.toLowerCase())
 
     if(!channel) {
-      var channel = new Channel(channels.length, name, active, [], false, "user")
+      var channel = new Channel(channels.length + 1, name, active, [], false, "user")
       channels.push(channel)
     }
 
