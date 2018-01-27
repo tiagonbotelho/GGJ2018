@@ -1,17 +1,30 @@
-var channels = [
-    new Channel(1, "general", true, [], false, "channel"),
-    new Channel(2, "random", false, [], false, "channel"),
-    new Channel(3, "keyboards", true, [], false, "channel"),
-    new Channel(4, "marketing", false, [], false, "channel"),
-    new Channel(5, "backend", true, [], false, "channel"),
-    new Channel(6, "sean", false, [], false, "user"),
-    new Channel(7, "tiago", true, [], false, "user"),
-    new Channel(8, "douwe", false, [], false, "user"),
-    new Channel(9, "zj", false, [], false, "user"),
-    new Channel(10, "pablo", true, [], false, "user")
-];
 
-$(document).ready(function(){
+
+function getRandomUser() {
+    var keys = Object.keys(window.users);
+    var name = keys[Math.floor(Math.random() * Math.floor(Object.keys(window.users).length))]
+    return window.users[name]
+}
+
+$(document).ready(function() {
+    users = company.generateUsers(20)
+    window.users = users
+
+    var channels = [
+        new Channel(1, "general", true, [], true, "channel"),
+        new Channel(2, "random", false, [], false, "channel"),
+        new Channel(3, "keyboards", true, [], false, "channel"),
+        new Channel(4, "marketing", false, [], false, "channel"),
+        new Channel(5, "backend", true, [], false, "channel"),
+
+        new Channel(6, getRandomUser().name, false, [], false, "user"),
+        new Channel(7, getRandomUser().name, false, [], false, "user"),
+        new Channel(8, getRandomUser().name, false, [], false, "user"),
+        new Channel(9, getRandomUser().name, false, [], false, "user"),
+    ];
+
+    window.channels = channels
+
     var active_chat = channels[0];
     active_chat.activate();
 
