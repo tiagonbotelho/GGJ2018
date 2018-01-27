@@ -6,6 +6,7 @@ function Channel(id, name, hasNotifications, conversations, active, type) {
     this.hasNotifications = hasNotifications;
     this.conversations = conversations;
     this.active = active;
+    this.followers = [];
 }
 
 Channel.prototype.profile_template = function() {
@@ -24,11 +25,11 @@ Channel.prototype.header_template = function() {
 
 Channel.prototype.template = function() {
     if (this.hasNotifications) {
-        this.classes = this.classes.concat("has-notifications");
+        this.classes.push("has-notifications");
     }
 
     if (this.active) {
-        this.classes = this.classes.concat("active");
+        this.classes.push("active");
     }
 
     return `<div class="${this.classes.join(" ")}"># <span>${this.name}</span></div>`;
@@ -37,7 +38,7 @@ Channel.prototype.template = function() {
 Channel.prototype.addMessage = function(from, message) {
     var date = new Date();
     var conversation = new Conversation(from, date, message);
-    this.conversations = this.conversations.concat(conversation);
+    this.conversations.push(conversation);
 
     if (from.active) {
         $(".content").prepend(conversation.template());
@@ -80,6 +81,18 @@ Channel.prototype.deactivate = function() {
     $(".content").empty();
     $(".user-header").empty();
     $(".profile").empty();
+}
+
+Channel.subscribe = function(name, scenario) {
+    var channel = Channel.findChannel(channels, name);
+
+    channel.followers.push(scenario);
+}
+
+Channel.unsubscribe = function(name, scenario) {
+    var channel = Channel.findChannel(channels, name);
+
+    channel.followers.splice(channel.followers.indexOf(scenario), 1);
 }
 
 Channel.findChannel = function(list, name) {
