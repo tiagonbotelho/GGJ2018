@@ -28,6 +28,16 @@ function love.textinput(text)
 end
 
 function love.keyreleased(key, code)
+  if main_window.text_area.active then
+    if key == "return" then
+      main_window.handle_return()
+      -- send message
+    elseif key == "backspace" then
+      main_window.handle_backspace()
+    elseif key == "space" then
+      main_window.append_text_to_text_area(" ")
+    end
+  end
 end
 
 function love.quit()

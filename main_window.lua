@@ -45,7 +45,7 @@ function main_window.draw_text_area()
     text_area.rx,
     text_area.ry)
 
-  love.graphics.setFont(fonts.lato_regular)
+  love.graphics.setFont(fonts.lato_regular_increased)
   love.graphics.setColor(colors.black.red, colors.black.green, colors.black.blue)
   love.graphics.print(main_window.text_area.text, main_window.text_area.pos.x + 10, main_window.text_area.pos.y + 15)
 end
@@ -62,13 +62,52 @@ function main_window.check_mousepress(x, y)
   end
 end
 
-function main_window.append_text_to_text_area(text)
-  if text ~= "|" then
-    text = text .. "|"
+function main_window.handle_backspace()
+  if string.find(main_window.text_area.text, '|') then
+    main_window.remove_last_character(main_window.text_area.text)
   end
 
-  main_window.text_area.text = main_window.text_area.text:sub(1, -2)
+  main_window.remove_last_character(main_window.text_area.text)
+  main_window.add_caret()
+end
+
+function main_window.handle_return()
+  local text = main_window.text_area.text
+  main_window.remove_last_character(text)
+
+  main_window.clear_text()
+
+  main_window.add_new_message(text)
+end
+
+function main_window.add_new_message()
+
+end
+
+-- helpers
+
+function main_window.append_text_to_text_area(text)
+  if string.find(main_window.text_area.text, '|') then
+    main_window.remove_last_character(main_window.text_area.text)
+  end
+
   main_window.text_area.text = main_window.text_area.text .. text
+
+  if text ~= "|" then
+    main_window.add_caret()
+  end
+end
+
+function main_window.clear_text()
+  main_window.text_area.text = "|"
+end
+
+function main_window.remove_last_character(text)
+  text = text:sub(1, -2)
+end
+
+function main_window.add_caret()
+  main_window.text_area.text = main_window.text_area.text .. "|"
 end
 
 return main_window
