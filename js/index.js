@@ -24,6 +24,8 @@ $(document).ready(function() {
     window.active_chat = channels[0];
     active_chat.activate();
 
+    $("#username").html(company.player.name);
+
     Channel.getChannels(channels).forEach(function(channel) {
         $(".channel-list").append(channel.template());
     });

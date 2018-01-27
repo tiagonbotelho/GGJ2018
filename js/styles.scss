@@ -123,13 +123,11 @@ body {
     }
 
     .profile {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-      overflow: hidden;
-      box-sizing: border-box;
-      border: 1px solid $lightgray;
-      width: 100%;
+      position: absolute;
+      width: 300px;
+      background: black;
+      height: 100%;
+      right: 0;
     }
 
     .content {

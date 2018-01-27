@@ -2,7 +2,7 @@ function Channel(id, name, hasNotifications, conversations, active, type) {
     this.type = type;
     this.id = type + id;
     this.classes = [type, this.id];
-    this.name = name;
+    this.name = name.toLowerCase();
     this.hasNotifications = hasNotifications;
     this.conversations = conversations;
     this.active = active;

@@ -227,12 +227,12 @@ Company.prototype.titles = [
 ]
 
 Company.prototype.generate = function() {
-  this.player = { name: this.getRandomName(), title: { level: 2, title: "Manager" }}
+  this.player = { name: this.getRandomName().toLowerCase(), title: { level: 2, title: "Manager" }}
 
   this.users = {}
 
   for(var i = 0; i < this.size; i++) {
-    var name = this.getRandomName()
+    var name = this.getRandomName().toLowerCase();
 
     this.users[name] = {
       name: name,
