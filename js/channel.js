@@ -92,9 +92,16 @@ Channel.prototype.deactivate = function() {
 }
 
 Channel.subscribe = function(name, scenario) {
+    name = name.toLowerCase()
     var channel = Channel.findChannel(channels, name);
 
+    if(!channel) {
+        channel = Channel.findOrCreateUserChannel(name, false)
+    }
+
     channel.followers.push(scenario);
+
+    return channel
 }
 
 Channel.unsubscribe = function(name, scenario) {
