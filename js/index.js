@@ -1,5 +1,5 @@
 var channels = [
-    new Channel(1, "general", true, [], true, "channel"),
+    new Channel(1, "general", true, [], false, "channel"),
     new Channel(2, "random", false, [], false, "channel"),
     new Channel(3, "keyboards", true, [], false, "channel"),
     new Channel(4, "marketing", false, [], false, "channel"),
@@ -12,8 +12,8 @@ var channels = [
 ];
 
 $(document).ready(function(){
-    var active_chat = users[0];
-    $(".chatbox").attr("placeholder", "Message @" + active_chat.name);
+    var active_chat = channels[0];
+    active_chat.activate();
 
     Channel.getChannels(channels).forEach(function(channel) {
         $(".channel-list").append(channel.template());
@@ -23,8 +23,8 @@ $(document).ready(function(){
         $(".users-list").append(user.template());
     });
 
-    $(".user").on('click', function(e) {
-        var clicked_user = User.findUser(users, this.children[0].innerHTML);
+    $(".user").on('click', function(_) {
+        let clicked_user = Channel.findChannel(channels, this.children[0].innerHTML);
 
         if (clicked_user !== active_chat) {
             active_chat.deactivate();
@@ -33,13 +33,22 @@ $(document).ready(function(){
         }
     });
 
+    $(".channel").on('click', function(_) {
+        let clicked_channel = Channel.findChannel(channels, this.children[0].innerHTML);
+
+        if (clicked_channel !== active_chat) {
+            active_chat.deactivate();
+            clicked_channel.activate();
+            active_chat = clicked_channel;
+        }
+    });
+
     $(".chatbox").keypress(function(e) {
-        var key = e.which;
+        let key = e.which;
 
         if (key === 13) {
             e.preventDefault();
-            var user = User.findUser(users, $("#username").html());
-            console.log("Adding message to: ", active_chat);
+            let user = Channel.findChannel(channels, $("#username").html());
             active_chat.addMessage(user, this.innerHTML);
         }
     });

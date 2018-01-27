@@ -9,17 +9,15 @@ function Channel(id, name, hasNotifications, conversations, active, type) {
 }
 
 Channel.prototype.template = function(index) {
-    var classes = [this.type, this.type + index];
-
     if (this.hasNotifications) {
-        classes = classes.concat("has-notifications");
+        this.classes = this.classes.concat("has-notifications");
     }
 
     if (this.active) {
-        classes = classes.concat("active");
+        this.classes = this.classes.concat("active");
     }
 
-    return `<div class="${classes.join(" ")}"># <span>${this.name}</span></div>`;
+    return `<div class="${this.classes.join(" ")}"># <span>${this.name}</span></div>`;
 }
 
 Channel.prototype.addMessage = function(from, message) {
@@ -33,9 +31,9 @@ Channel.prototype.addMessage = function(from, message) {
 
 Channel.prototype.activate = function() {
     this.active = true;
-    var handle = "#"
+    let handle = "#";
 
-    if (this.type == "user") {
+    if (this.type === "user") {
         handle = "@"
     }
 
@@ -57,19 +55,19 @@ Channel.findChannel = function(list, name) {
         if (item.name === name) {
             result = item;
         }
-
-        return result;
     });
+
+    return result;
 }
 
 Channel.getUsers = function(list) {
-    list.filter(function(item) {
+    return list.filter(function(item) {
         return item.type === "user";
     })
 }
 
 Channel.getChannels = function(list) {
-    list.filter(function(item) {
+    return list.filter(function(item) {
         return item.type === "channel";
     })
 }
