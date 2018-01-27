@@ -232,7 +232,7 @@ var titles = [
 
 company.departments = departments
 
-company.player = { level: 2, title: "Manager" }
+company.player = { name: company.getRandomName(), level: 2, title: "Manager" }
 
 company.getRandomName = function() {
   var i = Math.floor(Math.random() * Math.floor(names.length))

@@ -9,6 +9,8 @@ function getRandomUser() {
 $(document).ready(function() {
     users = company.generateUsers(20)
     window.users = users
+    window.level = 1
+    window.player = company.player
 
     var channels = [
         new Channel(1, "general", true, [], true, "channel"),
