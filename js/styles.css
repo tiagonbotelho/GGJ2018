@@ -32,6 +32,8 @@ body {
     .box #sidebar .has-notifications > span {
       color: white;
       font-weight: 800; }
+    .box #sidebar .active {
+      background-color: #4c9689; }
     .box #sidebar #channels {
       margin-top: 20px; }
       .box #sidebar #channels .channel-list {
@@ -52,8 +54,6 @@ body {
           .box #sidebar #direct-messages .users-list .user:hover {
             width: 100%;
             background-color: #3e313c; }
-        .box #sidebar #direct-messages .users-list .active {
-          background-color: #4c9689; }
   .box #main {
     display: flex;
     position: relative;
@@ -61,7 +61,23 @@ body {
     flex-basis: 0%;
     flex-shrink: 1;
     flex-grow: 1;
-    padding-left: 0; }
+    padding-left: 0;
+    padding-top: 10px; }
+    .box #main .user-header {
+      display: block;
+      flex-basis: 40px;
+      border-bottom: 1px solid rgba(160, 160, 162, 0.7); }
+      .box #main .user-header .channel-name {
+        margin-left: 15px;
+        font-weight: 900; }
+    .box #main .profile {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 1px solid rgba(160, 160, 162, 0.7);
+      width: 100%; }
     .box #main .content {
       overflow-y: scroll;
       overflow-x: hidden;
@@ -71,6 +87,19 @@ body {
       flex-shrink: 1;
       flex-grow: 1;
       box-sizing: border-box; }
+    .box #main .chatbox {
+      display: block;
+      position: relative;
+      border: 2px solid rgba(160, 160, 162, 0.7);
+      border-radius: 6px;
+      height: 40px;
+      padding-top: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin: 20px; }
+    .box #main .chatbox:focus {
+      outline: none;
+      border: 2px solid #717274; }
     .box #main .message {
       font-size: 15px;
       font-weght: 400;
@@ -92,18 +121,5 @@ body {
       display: block;
       /* For Firefox */
       color: rgba(160, 160, 162, 0.7); }
-    .box #main .chatbox {
-      display: block;
-      position: relative;
-      border: 2px solid rgba(160, 160, 162, 0.7);
-      border-radius: 6px;
-      height: 40px;
-      padding-top: 5px;
-      padding-left: 10px;
-      padding-right: 10px;
-      margin: 20px; }
-    .box #main .chatbox:focus {
-      outline: none;
-      border: 2px solid #717274; }
 
 /*# sourceMappingURL=styles.css.map */

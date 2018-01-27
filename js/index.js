@@ -1,5 +1,5 @@
 var channels = [
-    new Channel(1, "general", true, [], false, "channel"),
+    new Channel(1, "general", false, [], false, "channel"),
     new Channel(2, "random", false, [], false, "channel"),
     new Channel(3, "keyboards", true, [], false, "channel"),
     new Channel(4, "marketing", false, [], false, "channel"),
@@ -11,8 +11,9 @@ var channels = [
     new Channel(10, "pablo", true, [], false, "user")
 ];
 
+var active_chat = channels[0];
+
 $(document).ready(function(){
-    var active_chat = channels[0];
     active_chat.activate();
 
     Channel.getChannels(channels).forEach(function(channel) {

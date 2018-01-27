@@ -8,7 +8,21 @@ function Channel(id, name, hasNotifications, conversations, active, type) {
     this.active = active;
 }
 
-Channel.prototype.template = function(index) {
+Channel.prototype.header_template = function() {
+    var name = this.name;
+
+    if (this.type === "channel") {
+        name = "#" + this.name;
+    }
+
+    return `<div class="header"><span class="channel-name">${name}</span></div>`
+}
+
+Channel.prototype.profile_template = function() {
+    return `<div class="profile"></div>`
+}
+
+Channel.prototype.template = function() {
     if (this.hasNotifications) {
         this.classes = this.classes.concat("has-notifications");
     }
@@ -29,23 +43,39 @@ Channel.prototype.addMessage = function(from, message) {
     $(".chatbox").html("");
 }
 
+Channel.prototype.renderConversation = function() {
+    this.conversations.forEach(function(conversation) {
+        $(".content").prepend(conversation.template());
+    })
+}
+
 Channel.prototype.activate = function() {
     this.active = true;
     let handle = "#";
 
-    if (this.type === "user") {
-        handle = "@"
-    }
+    if (this.type === "user") { handle = "@"; }
+    if (this.hasNotifications) { $("." + this.id).removeClass("has-notifications"); }
 
-    $(this.id).addClass("active");
+    $("." + this.id).addClass("active");
+
+    this.renderConversation();
 
     $(".chatbox").attr("placeholder", "Message " + handle + this.name);
+    $(".user-header").append(this.header_template());
+
+    var $this = this;
+
+    $(".header").on('click', function() {
+        $("#main").append($this.profile_template());
+    });
 }
 
 Channel.prototype.deactivate = function() {
     this.active = false;
 
-    $(this.id).removeClass("active");
+    $("." + this.id).removeClass("active");
+    $(".content").empty();
+    $(".user-header").empty();
 }
 
 Channel.findChannel = function(list, name) {

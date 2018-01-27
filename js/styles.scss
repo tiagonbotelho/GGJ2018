@@ -61,6 +61,10 @@ body {
       font-weight: 800;
     }
 
+    .active {
+      background-color: $green;
+    }
+
     #channels {
       margin-top: 20px;
 
@@ -93,10 +97,6 @@ body {
             background-color: $dark_purple;
           }
         }
-
-        .active {
-          background-color: $green;
-        }
       }
     }
   }
@@ -109,6 +109,28 @@ body {
     flex-shrink: 1;
     flex-grow: 1;
     padding-left: 0;
+    padding-top: 10px;
+
+    .user-header {
+      display: block;
+      flex-basis: 40px;
+      border-bottom: 1px solid $lightgray;
+
+      .channel-name {
+        margin-left: 15px;
+        font-weight: 900;
+      }
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow: hidden;
+      box-sizing: border-box;
+      border: 1px solid $lightgray;
+      width: 100%;
+    }
 
     .content {
       overflow-y: scroll;
@@ -119,6 +141,23 @@ body {
       flex-shrink: 1;
       flex-grow: 1;
       box-sizing: border-box;
+    }
+
+    .chatbox {
+      display: block;
+      position: relative;
+      border: 2px solid $lightgray;
+      border-radius: 6px;
+      height: 40px;
+      padding-top: 5px;
+      padding-left: 10px;
+      padding-right: 10px;
+      margin: 20px;
+    }
+
+    .chatbox:focus {
+      outline: none;
+      border: 2px solid $gray;
     }
 
     .message {
@@ -149,22 +188,6 @@ body {
       color: $lightgray;
     }
 
-    .chatbox {
-      display: block;
-      position: relative;
-      border: 2px solid $lightgray;
-      border-radius: 6px;
-      height: 40px;
-      padding-top: 5px;
-      padding-left: 10px;
-      padding-right: 10px;
-      margin: 20px;
-    }
-
-    .chatbox:focus {
-      outline: none;
-      border: 2px solid $gray;
-    }
   }
 }
 
