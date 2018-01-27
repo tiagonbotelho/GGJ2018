@@ -92,6 +92,20 @@ Channel.findChannel = function(list, name) {
     return result;
 }
 
+Channel.findOrCreateUserChannel = function(name, active) {
+    var channel = Channel.findChannel(channels, name.toLowerCase())
+
+    if(!channel) {
+      var channel = new Channel(channels.length, name, active, [], false, "user")
+      channels.push(channel)
+    }
+
+    $(".users-list").append(channel.template());
+
+    return channel
+}
+
+
 Channel.getUsers = function(list) {
     return list.filter(function(item) {
         return item.type === "user";

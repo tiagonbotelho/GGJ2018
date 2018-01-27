@@ -62,6 +62,8 @@ $(document).ready(function() {
             active_chat.addMessage(company.player, this.innerHTML);
         }
     });
+
+    new WelcomeScenario()
 });
 
 function addZero(i) {
