@@ -16,10 +16,6 @@ $(document).ready(function() {
     channels.push(new Channel("operations",   false, [], false, "channel"))
     channels.push(new Channel("marketing",    false, [], false, "channel"))
     channels.push(new Channel("emergency",    false, [], false, "channel"))
-    channels.push(new Channel(company.getRandomUser().name, false, [], false, "user"))
-    channels.push(new Channel(company.getRandomUser().name, false, [], false, "user"))
-    channels.push(new Channel(company.getRandomUser().name, false, [], false, "user"))
-    channels.push(new Channel(company.getRandomUser().name, false, [], false, "user"))
 
     window.active_chat = channels[0];
     active_chat.activate();
@@ -48,9 +44,7 @@ $(document).ready(function() {
         let clicked_channel = Channel.findChannel(channels, this.children[0].innerHTML);
 
         if (clicked_channel !== active_chat) {
-            active_chat.deactivate();
             clicked_channel.activate();
-            active_chat = clicked_channel;
         }
     });
 

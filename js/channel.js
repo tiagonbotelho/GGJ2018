@@ -58,6 +58,9 @@ Channel.prototype.renderConversation = function() {
 }
 
 Channel.prototype.activate = function() {
+    active_chat.deactivate();
+    active_chat = this;
+
     this.active = true;
     let handle = "#";
 

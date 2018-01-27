@@ -1,5 +1,7 @@
 
+var messages = null
 var i = 0
+
 
 var WelcomeScenario = function () {
   var manager = company.getDepartmentSeniorRandomUser(company.player.department)
@@ -11,15 +13,14 @@ var WelcomeScenario = function () {
   this.manager = manager;
 
   var channel = Channel.findOrCreateUserChannel(manager.name, true)
-
   Channel.subscribe(channel.name, this)
+  channel.activate()
 
-  var messages = [
+  messages = [
     `Hey ${company.player.name}, welcome to Transmissions Inc.`
   ]
 
   channel.addMessage(manager, messages[i])
-
 }
 
 WelcomeScenario.prototype = new Scenario()
