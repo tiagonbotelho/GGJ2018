@@ -57,7 +57,7 @@ $(document).ready(function() {
         }
     });
 
-    new WelcomeScenario()
+    new DelegateScenario();
 });
 
 function addZero(i) {
