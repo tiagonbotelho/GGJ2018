@@ -27,6 +27,7 @@ WelcomeScenario.prototype = new Scenario()
 WelcomeScenario.prototype.onConversation = function(conversation, channel) {
     if (conversation.from !== this.manager) {
         channel.addMessage(this.manager, "OH HAI!")
+        Channel.unsubscribe(channel.name, this);
     }
 }
 
