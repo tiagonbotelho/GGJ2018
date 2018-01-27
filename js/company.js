@@ -251,14 +251,16 @@ company.getRandomTitle = function() {
 }
 
 company.generateUsers = function(x) {
-  var users = []
+  var users = {}
 
   for(var i = 0; i < x; i++) {
-    users.push({
-      name: company.getRandomName(),
+    var name = company.getRandomName()
+
+    users[name] = {
+      name: name,
       department: company.getRandomDepartment(),
       title: company.getRandomTitle
-    })
+    }
   }
 
   return users
