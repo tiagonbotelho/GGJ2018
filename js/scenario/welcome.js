@@ -9,7 +9,8 @@ var WelcomeScenario = function () {
   }
 
   var channel = Channel.findOrCreateUserChannel(manager.name, true)
-  console.log(channel)
+
+  Channel.subscribe(channel.name, this)
 
   var messages = [
     `Hey ${company.player.name}, welcome to Transmissions Inc.`
