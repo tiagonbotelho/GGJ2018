@@ -43,6 +43,10 @@ Channel.prototype.addMessage = function(from, message) {
     if (this.active) {
         $(".content").prepend(conversation.template());
         $(".chatbox").html("");
+    } else {
+        this.hasNotifications = true;
+        this.classes.push("has-notifications");
+        $("."+this.id).addClass("has-notifications");
     }
 
     var $this = this;
