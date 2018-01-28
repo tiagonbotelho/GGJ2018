@@ -54,16 +54,28 @@ var DelegateScenario = function() {
 }
 
 DelegateScenario.prototype = new Scenario();
+
 DelegateScenario.prototype.onConversation = function(conversation, channel) {
-    if (channel === this.senior_channel) {
-        if (conversation.from !== this.senior) {
-            channel.addMessage(this.senior, this.senior_messages[current_senior_conversation].message(conversation))
+    var senior_channel = this.senior_channel;
+    var junior_channel = this.junior_channel;
+    var junior = this.junior;
+    var senior = this.senior;
+    var senior_messages = this.senior_messages;
+    var junior_messages = this.junior_messages;
+
+    setTimeout(function() {
+        if (channel === senior_channel) {
+            console.log(channel);
+            console.log(conversation);
+            if (conversation.from !== senior) {
+                channel.addMessage(senior, senior_messages[current_senior_conversation].message(conversation))
+            }
+        } else if (channel === junior_channel) {
+            if (conversation.from !== junior) {
+                channel.addMessage(junior, junior_messages[current_junior_conversation].message(conversation))
+            }
         }
-    } else if (channel === this.junior_channel) {
-        if (conversation.from !== this.junior) {
-            channel.addMessage(this.junior, this.junior_messages[current_junior_conversation].message(conversation))
-        }
-    }
+    }, 3000);
 }
 
 function Outcome(positive, negatives, callback) {
