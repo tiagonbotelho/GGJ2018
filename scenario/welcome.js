@@ -1,9 +1,4 @@
 
-function typingLength(message) {
-  return 1000 + (Math.random() * 1000 * 2) + (message.length * 100 / 60000)
-}
-
-
 var WelcomeScenario = function () {
   this.scenario = this
 
