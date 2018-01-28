@@ -7,7 +7,6 @@ var DelegateScenario = function() {
     var junior = company.getDepartmentJuniorRandomUser(company.player.department);
 
     if(!senior) { senior = company.getRandomUser(); }
-
     if(!junior) { junior = company.getRandomUser(); }
 
     this.senior = senior;
@@ -24,85 +23,48 @@ var DelegateScenario = function() {
     var $this = this;
 
     this.senior_messages = [
-        new Outcome(`Hey ${company.player.name}, are you available to have a look at a few CVs?`, []),
-        new Outcome(`Great please talk to him then. Have a great day!`, [
-            new Negative(`Hm, ok. Can you then ask someone else to take a look?`, ["no", "i can't", "sorry", "unable", "sadly"]),
-            new Negative(`Are you sure you are not too busy already? Maybe someone can take that work for you!`, ["yeah", "sure", "i am up for it", "please do", "yes", "of course", "ofc"])
-        ]),
-        new Outcome(`Ok! Let me know if you were able to find someone then!`, [new Negative(`Well.. do it!`, ["no", "don't" , "nah", "i don't think so", "sorry", "unable", "not"])], function() {
+        new Answer(`Hey ${company.player.name}, are you available to have a look at a few CVs?`, [], function() { current_senior_conversation++ }),
+        new Answer(`Great please talk to him then. Have a great day!`, [
+            new Message(`Hm, ok. Can you then ask someone else to take a look?`, ["no", "i can't", "sorry", "unable", "sadly"]),
+            new Message(`Are you sure you are not too busy already? Maybe someone can take that work for you!`, ["yeah", "sure", "i am up for it", "please do", "yes", "of course", "ofc"])
+        ], function() { current_senior_conversation++ }),
+        new Answer(`Ok! Let me know if you were able to find someone then!`, [new Message(`Well.. do it!`, ["no", "don't" , "nah", "i don't think so", "sorry", "unable", "not"])], function() {
             Channel.subscribe(junior_channel.name, $this);
 
             setTimeout(function() {
                 if (!help_found) {
                     senior_channel.addMessage(senior, "Hey! Are you still looking? I need those CVs reviewed by today!")
                 }
-            }, 10000)
+            }, 20 * 1000);
+
+            current_senior_conversation++;
         })
     ];
 
     this.junior_messages = [
-        new Outcome("I am not sure what you are asking me, what exactly do you want me to do?", [new Negative(`Hi ${company.player.name}! Sure I am glad to help you out if possible`, ["CV", "task", "help", "can", "you", "please"])], function() {
+        new Answer("I am not sure what you are asking me, what exactly do you want me to do?", [new Message(`Hi ${company.player.name}! Sure I am glad to help you out if possible`, ["CV", "task", "help", "can", "you", "please"])], function() {
             help_found = true;
+
+            current_junior_conversation++;
         })
     ]
 
     senior_channel.addMessage(this.senior, this.senior_messages[0].message(new Conversation(this.senior, new Date, "")));
-    function Negative(message, keywords) {
-        this.message = message;
-        this.keywords = keywords;
-    }
 }
 
 DelegateScenario.prototype = new Scenario();
 
 DelegateScenario.prototype.onConversation = function(conversation, channel) {
-    var senior_channel = this.senior_channel;
-    var junior_channel = this.junior_channel;
-    var junior = this.junior;
-    var senior = this.senior;
-    var senior_messages = this.senior_messages;
-    var junior_messages = this.junior_messages;
-
-    setTimeout(function() {
-        if (channel === senior_channel) {
-            console.log(channel);
-            console.log(conversation);
-            if (conversation.from !== senior) {
-                channel.addMessage(senior, senior_messages[current_senior_conversation].message(conversation))
+    setTimeout(function(scenario) {
+        if (channel === scenario.senior_channel) {
+            if (conversation.from !== scenario.senior) {
+                channel.addMessage(scenario.senior, scenario.senior_messages[current_senior_conversation].message(conversation))
             }
-        } else if (channel === junior_channel) {
-            if (conversation.from !== junior) {
-                channel.addMessage(junior, junior_messages[current_junior_conversation].message(conversation))
+        } else if (channel === scenario.junior_channel) {
+            if (conversation.from !== scenario.junior) {
+                channel.addMessage(scenario.junior, scenario.junior_messages[current_junior_conversation].message(conversation))
             }
         }
-    }, 3000);
+    }(this), Math.round(Math.random() + 1));
 }
-
-function Outcome(positive, negatives, callback) {
-    this.positive = positive;
-    this.negatives = negatives;
-    this.callback = callback;
-}
-
-Outcome.prototype.message = function(conversation) {
-    var result = this.positive;
-
-    for (i = 0; i < this.negatives.length; i++) {
-        let keywords = this.negatives[i].keywords;
-
-        for (j=0; j < keywords.length; j++) {
-            if(conversation.message.toLowerCase().indexOf(keywords[j]) !== -1) {
-                result = this.negatives[i].message;
-            }
-        }
-    }
-
-    if (this.callback) { this.callback() }
-
-    if (conversation.from.title.level >= company.player.title.level) { current_senior_conversation++; }
-    if (conversation.from.title.level < company.player.title.level) { current_junior_conversation++; }
-
-    return result;
-}
-
 
