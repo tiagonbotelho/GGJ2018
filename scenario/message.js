@@ -11,7 +11,7 @@ function Message(message, keywords) {
 Message.matchPhrase = function(phrase, keywords) {
     var match = false;
 
-    for(i = 0; i < keywords.length; i++) {
+    for(var i = 0; i < keywords.length; i++) {
         if (phrase.toLowerCase().indexOf(keywords[i]) !== -1) {
             match = true;
         }

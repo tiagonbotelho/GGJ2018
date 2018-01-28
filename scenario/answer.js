@@ -7,13 +7,9 @@ function Answer(fallback_message, messages, callback) {
 Answer.prototype.message = function(conversation) {
     var result = this.fallback_message;
 
-    for (i = 0; i < this.messages.length; i++) {
-        console.log(this);
-        console.log(this.messages[i]);
+    for (var i = 0; i < this.messages.length; i++) {
         if (Message.matchPhrase(conversation.message, this.messages[i].keywords)) {
-            console.log(this);
-            console.log(this.messages[i]);
-            result = "yabadabadoo";
+            result = this.messages[i].message;
         }
     }
 
