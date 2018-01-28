@@ -27,7 +27,7 @@ var DelegateScenario = function() {
         new Answer(`Great please talk to him then. Have a great day!`, [
             new Message(`Hm, ok. Can you then ask someone else to take a look?`, ["no", "i can't", "sorry", "unable", "sadly"]),
             new Message(`Are you sure you are not too busy already? Maybe someone can take that work for you!`, ["yeah", "sure", "i am up for it", "please do", "yes", "of course", "ofc"])
-        ], function() { current_senior_conversation++ }),
+            ], function() { current_senior_conversation++ }),
         new Answer(`Ok! Let me know if you were able to find someone then!`, [new Message(`Well.. do it!`, ["no", "don't" , "nah", "i don't think so", "sorry", "unable", "not"])], function() {
             Channel.subscribe(junior_channel.name, $this);
 
@@ -35,7 +35,7 @@ var DelegateScenario = function() {
                 if (!help_found) {
                     senior_channel.addMessage(senior, "Hey! Are you still looking? I need those CVs reviewed by today!")
                 }
-            }, 20 * 1000);
+            }, 60 * 1000);
 
             current_senior_conversation++;
         })

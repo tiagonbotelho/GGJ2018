@@ -8,8 +8,12 @@ Answer.prototype.message = function(conversation) {
     var result = this.fallback_message;
 
     for (i = 0; i < this.messages.length; i++) {
-        if (Message.match(conversation.message, this.messages[i].keywords)) {
-            result = this.messages[i].message;
+        console.log(this);
+        console.log(this.messages[i]);
+        if (Message.matchPhrase(conversation.message, this.messages[i].keywords)) {
+            console.log(this);
+            console.log(this.messages[i]);
+            result = "yabadabadoo";
         }
     }
 

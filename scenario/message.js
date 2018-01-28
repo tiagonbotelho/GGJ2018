@@ -8,7 +8,7 @@ function Message(message, keywords) {
     }
 }
 
-Message.match = function(phrase, keywords) {
+Message.matchPhrase = function(phrase, keywords) {
     var match = false;
 
     for(i = 0; i < keywords.length; i++) {
