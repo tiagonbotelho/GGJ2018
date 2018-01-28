@@ -15,10 +15,13 @@ var DelegateScenario = function() {
 
     var senior_channel = Channel.findOrCreateUserChannel(senior.name, false);
     var junior_channel = Channel.findOrCreateUserChannel(junior.name, false)
-    var $this = this;
+
+    this.senior_channel = senior_channel;
+    this.junior_channel = junior_channel;
 
     Channel.subscribe(senior_channel.name, this);
-    Channel.subscribe(junior_channel.name, this);
+
+    var $this = this;
 
     this.senior_messages = [
         new Outcome(`Hey ${company.player.name}, are you available to have a look at a few CVs?`, []),
@@ -38,7 +41,7 @@ var DelegateScenario = function() {
     ];
 
     this.junior_messages = [
-        new Outcome(`Hi ${company.player.name}! Sure I am glad to help you out if possible`, [], function() {
+        new Outcome("I am not sure what you are asking me, what exactly do you want me to do?", [new Negative(`Hi ${company.player.name}! Sure I am glad to help you out if possible`, ["CV", "task", "help", "can", "you", "please"])], function() {
             help_found = true;
         })
     ]
@@ -52,10 +55,14 @@ var DelegateScenario = function() {
 
 DelegateScenario.prototype = new Scenario();
 DelegateScenario.prototype.onConversation = function(conversation, channel) {
-    if (conversation.from !== this.senior) {
-        channel.addMessage(this.senior, this.senior_messages[current_senior_conversation].message(conversation))
-    } else if (conversation.from !== this.junior) {
-        channel.addMessage(this.junior, this.junior_messages[current_junior_conversation].message(conversation))
+    if (channel === this.senior_channel) {
+        if (conversation.from !== this.senior) {
+            channel.addMessage(this.senior, this.senior_messages[current_senior_conversation].message(conversation))
+        }
+    } else if (channel === this.junior_channel) {
+        if (conversation.from !== this.junior) {
+            channel.addMessage(this.junior, this.junior_messages[current_junior_conversation].message(conversation))
+        }
     }
 }
 
@@ -66,7 +73,6 @@ function Outcome(positive, negatives, callback) {
 }
 
 Outcome.prototype.message = function(conversation) {
-    var match = false;
     var result = this.positive;
 
     for (i = 0; i < this.negatives.length; i++) {
@@ -75,15 +81,14 @@ Outcome.prototype.message = function(conversation) {
         for (j=0; j < keywords.length; j++) {
             if(conversation.message.toLowerCase().indexOf(keywords[j]) !== -1) {
                 result = this.negatives[i].message;
-                match = true;
             }
         }
     }
 
     if (this.callback) { this.callback() }
 
-    if (conversation.from === this.junior) { current_junior_conversation++; }
-    if (conversation.from === this.senior) { current_senior_conversation++; }
+    if (conversation.from.title.level >= company.player.title.level) { current_senior_conversation++; }
+    if (conversation.from.title.level < company.player.title.level) { current_junior_conversation++; }
 
     return result;
 }
