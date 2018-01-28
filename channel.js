@@ -51,7 +51,9 @@ Channel.prototype.addMessage = function(from, message) {
 
     var $this = this;
     this.followers.forEach(function(follower) {
-        follower.onConversation(conversation, $this);
+        setTimeout(function() { follower.onConversation(conversation, $this); },
+            1000 + Math.random() * 1500)
+
     });
 }
 
